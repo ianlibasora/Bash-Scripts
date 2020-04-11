@@ -1,0 +1,19 @@
+#!//bin/bash
+
+APT=$1
+METAR=`wget -q -O - https://aviationweather.gov/metar/data?ids=$APT |
+grep "<code>" |
+sed 's|^.*<code>||' | 
+sed 's|</code>.*||' `
+
+TAF=`wget -q -O - https://aviationweather.gov/taf/data?ids=$APT |
+grep "<code>" |
+sed 's|^.*<code>||' | 
+sed 's|</code>.*||' |
+sed 's|<br/>||g' |
+sed 's|&nbsp;| |g'`
+
+echo "-----------------   Latest METAR   -----------------"
+echo $METAR
+echo "------------------   Latest TAF   ------------------"
+echo $TAF

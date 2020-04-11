@@ -1,0 +1,36 @@
+#!/bin/bash
+
+CODE=$1
+# get the desired stock code
+
+cd ~
+# change directory into the home dir
+
+wget -q -O - https://bigcharts.marketwatch.com/quickchart/quickchart.asp?symb=$CODE > stock.txt
+# retrieves the website for the given code and stores it locally in the file "stock.txt"
+# this is all located in the home dir
+
+PRICE=`
+cat stock.txt |
+# opens the stock.txt file
+tr -d "\n" |
+# use tr to delete the newline character
+sed 's|^.*Last:</span>||' |
+# using sed, find everything up to the pattern "Last:</span>"
+# "^" refers to the start of the line, ".*" refers to everything up to the pattern
+# here, sed finds everything up to the pattern, and deletes it
+sed 's|</div>.*||' |
+# using sed, find everything after the pattern "</div>"
+# ".*" here refering to everything after the "</div>"
+# here, sed finds everything after "<div>" and deletes it
+sed 's|^.*>||'
+# at this stage, we are left with "<div>STOCK_PRICE"
+# here, sed finds everything up to the ">" and deletes it
+# "^.*" here again refers to everything from the start of the line
+`
+# after this, we should now be left with the stock price
+
+echo $PRICE
+# echo the final stock price
+
+rm stock.txt
