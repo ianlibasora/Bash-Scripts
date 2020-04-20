@@ -1,2 +1,3 @@
-# scripts
+# Scripts
+
 Bash scripts
