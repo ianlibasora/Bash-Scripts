@@ -1,3 +1,3 @@
-# Scripts
+# Bash Scripts
 
-Bash scripts
+Short bash sscripts
