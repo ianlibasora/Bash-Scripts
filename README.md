@@ -1,3 +1,3 @@
 # Bash Scripts
 
-Short bash scripts
+Collection of short bash scripts
