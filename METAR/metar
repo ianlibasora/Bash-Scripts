@@ -1,6 +1,12 @@
 #!//bin/bash
 
-APT=$1
+if [ $# -eq 0 ]
+   then
+      APT="EIDW"
+else
+   APT=$1
+fi
+
 METAR=`wget -q -O - https://aviationweather.gov/metar/data?ids=$APT |
 grep "<code>" |
 sed 's|^.*<code>||' | 
