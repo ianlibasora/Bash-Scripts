@@ -1,3 +1,3 @@
-# Metar script
+# METAR Script
 
-Returns METAR/TAF for requested airport. Uses airport ICAO as argument. If no argument supplied, uses "EIDW" (Dublin) as default.
+Simple METAR request script. Returns METAR/TAF for requested airport. Uses airport ICAO as argument. If no argument supplied, uses "EIDW" (Dublin) as default.
